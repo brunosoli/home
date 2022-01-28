@@ -1,0 +1,14 @@
+# Ignore everything
+/*
+
+# But not these...
+!/.gitignore
+!/.gitconfig
+
+!/.bash_aliases
+
+!/.ssh/
+/.ssh/*
+!/.ssh/config
+
+

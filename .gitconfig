@@ -1,0 +1,16 @@
+[user]
+	name = Bruno Oliveira
+	email = bruno.oliveira@cmc.pr.gov.br
+
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[difftool "meld"]
+	cmd = meld "$LOCAL" "$REMOTE"
+
+[alias]
+	ll = log --graph --pretty=format:'%C(yellow)%h%Creset -%Cred%d%Creset %s %Cgreen| %cr %C(bold blue)| %an%Creset' --abbrev-commit --date=relative
+	d = difftool
+	ds = difftool --staged
+	st = status -s
