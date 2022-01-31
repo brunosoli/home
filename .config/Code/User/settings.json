@@ -16,18 +16,23 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80,
     "[markdown]": {
-    "editor.quickSuggestions": false,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
-},
-"diffEditor.ignoreTrimWhitespace": false,
-"redhat.telemetry.enabled": true,
-"yaml.schemas": {
-    "https://json.schemastore.org/ansible-playbook": ["deploy.yml"]
-},
-"[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-}
+        "editor.quickSuggestions": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "redhat.telemetry.enabled": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/ansible-playbook": [
+            "deploy.yml"
+        ]
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }
