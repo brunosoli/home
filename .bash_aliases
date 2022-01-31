@@ -13,6 +13,18 @@ alias bfg='java -jar ~/workspace/bfg/bfg-1.13.0.jar'
 alias bastion='ssh -D 6666 bruno.oliveira@bastion'
 alias kubectl='microk8s.kubectl'
 
+function tp() {
+    IP=$1
+    PORT=$2
+    </dev/tcp/$IP/$PORT && echo Port open. || echo Port closed.
+}
+
+function tpu() {
+    IP=$1
+    PORT=$2
+    </dev/udp/$IP/$PORT && echo Port open. || echo Port closed.
+}
+
 function cmcpw() {
     gpg -d "$1" | less
 }
