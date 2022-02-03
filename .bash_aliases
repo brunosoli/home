@@ -13,6 +13,22 @@ alias bfg='java -jar ~/workspace/bfg/bfg-1.13.0.jar'
 alias bastion='ssh -D 6666 bruno.oliveira@bastion'
 alias kubectl='microk8s.kubectl'
 
+# GIT
+function git-archive-branch() {
+    BRANCH=$1
+    # tag
+    git tag "archive/$BRANCH" "$BRANCH"
+    git branch -D "$BRANCH"
+    git push origin ":$BRANCH"
+    git push --tags
+
+    # Para restaurar o branch:
+    # git checkout -b <branchname> archive/<branchname>
+}
+
+alias git-prune-branches-not-on-remote="git remote prune origin"
+
+# NETWORK
 function tp() {
     IP=$1
     PORT=$2
