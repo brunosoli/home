@@ -41,6 +41,12 @@ function tpu() {
     </dev/udp/$IP/$PORT && echo Port open. || echo Port closed.
 }
 
+function telnet_https() {
+    HOST=$1
+    PORT=$2
+    openssl s_client -connect $HOST:$PORT
+}
+
 function cmcpw() {
     gpg -d "$1" | less
 }
@@ -59,6 +65,10 @@ function get_next_gidNumber()
 
 function cmccontab() {
 	rdesktop -u contab -r disk:home=/home/bruno.oliveira 10.0.0.39
+}
+
+function cmcimp() {
+	rdesktop -u admsuporte -r disk:Docs=/home/bruno.oliveira 10.0.0.7
 }
 
 function buriti() {
