@@ -7,7 +7,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias ping='ping -i 0,2'
 alias pcat='pygmentize -g' # apt install python3-pygments
-alias vpn='sudo openfortivpn'
+alias vpn='sudo openfortivpn --config="$HOME/.openfortivpn.config"'
 alias rdesktop='rdesktop -g 1280x960'
 alias bfg='java -jar ~/workspace/bfg/bfg-1.13.0.jar'
 alias bastion='ssh -D 6666 bruno.oliveira@bastion'
