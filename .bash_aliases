@@ -10,6 +10,7 @@ alias pcat='pygmentize -g' # apt install python3-pygments
 alias vpn='sudo openfortivpn --config="$HOME/.openfortivpn.config"'
 alias rdesktop='rdesktop -g 1280x960'
 alias bfg='java -jar ~/workspace/bfg/bfg-1.13.0.jar'
+alias curitiba='curl http://wttr.in/curitiba'
 alias bastion='ssh -D 6666 bruno.oliveira@bastion'
 alias kubectl='microk8s.kubectl'
 
