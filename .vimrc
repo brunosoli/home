@@ -40,6 +40,18 @@ function! LightlineFilename()
         \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 endfunction
 
+" Set cursor
+" Reference chart:
+"   Ps = 0 -> blinking block
+"   Ps = 1 -> blinking block (default)
+"   Ps = 2 -> steady block
+"   Ps = 3 -> blinking underline
+"   Ps = 4 -> steady underline
+"   Ps = 5 -> blinking bar
+"   Ps = 6 -> steady bar
+let &t_SI = "\e[6 q" " insert mode
+let &t_EI = "\e[2 q" " everything else
+
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
