@@ -92,6 +92,15 @@ function cmcrds-ext() {
 	rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 177.69.44.66:13389
 }
 
+# JSON e YAML
+function json2yaml {
+  python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
+}
+
+function yaml2json {
+  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
+}
+
 # Logs
 
 # Uso:
