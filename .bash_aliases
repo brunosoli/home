@@ -118,7 +118,7 @@ function find-logins() {
         echo "O arquivo \"$out\" será sobrescrito. Deseja continuar? [sN]: "
         read OP
         if [ "$OP" != "s" ]; then
-            exit
+            return
         fi
         >"$out"
     fi
@@ -126,7 +126,7 @@ function find-logins() {
     for d in $(ls -d */); do
         for f in $(ls -t $d"auth".log*); do
             year=$(ls -l --time-style="+%Y" "$f" | awk '{print $6}')
-            if [[ $f == *.gz ]]
+            if [[ $f == *.gz ]]; then
                 logins=$(zgrep -a -E "lightdm.+session opened.+$usuario" "$f")
             else
                 logins=$(grep -a -E "lightdm.+session opened.+$usuario" "$f")
