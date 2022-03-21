@@ -92,3 +92,57 @@ function cmcrds-ext() {
 	rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 177.69.44.66:13389
 }
 
+# Logs
+
+# Uso:
+# find-logins <usuario>
+#
+# Encontra registros de log
+#
+# Estrutura de diretórios recomendada:
+# .
+# ├── g10a
+# │   ├── auth.log
+# │   ├── auth.log.1
+# └── g10b
+#     ├── auth.log
+#     └── auth.log.1
+#
+function find-logins() {
+    usuario=$1
+    log=$2
+
+    out="$usuario.log"
+
+    if [[ -f "$out" ]]; then
+        echo "O arquivo \"$out\" será sobrescrito. Deseja continuar? [sN]: "
+        read OP
+        if [ "$OP" != "s" ]; then
+            exit
+        fi
+        >"$out"
+    fi
+    
+    for d in $(ls -d */); do
+        for f in $(ls -t $d"auth".log*); do
+            year=$(ls -l --time-style="+%Y" "$f" | awk '{print $6}')
+            if [[ $f == *.gz ]]
+                logins=$(zgrep -a -E "lightdm.+session opened.+$usuario" "$f")
+            else
+                logins=$(grep -a -E "lightdm.+session opened.+$usuario" "$f")
+            fi
+
+            if [[ ! -z "$logins" ]]; then
+                echo "$logins" | while read line; do
+                    echo "$year $line" | tee -a "$out"
+                done
+            fi
+        done
+    done
+
+    if [[ -f "$out" ]]; then
+        sort "$out" >"$usuario-sorted.log"
+    else
+        echo "Nenhum login encontrado."
+    fi
+}
