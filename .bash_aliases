@@ -77,7 +77,7 @@ function buriti() {
 }
 
 function copaiba() {
-	rdesktop -d CMCWIN -u Administrator -r disk:home=/home/bruno.oliveira 10.0.0.15
+	rdesktop -u Administrator -r disk:home=/home/bruno.oliveira 10.0.0.15
 }
 
 function cmcwinapl() {
