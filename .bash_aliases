@@ -27,6 +27,10 @@ function git-archive-branch() {
     # git checkout -b <branchname> archive/<branchname>
 }
 
+function git-show-commits() {
+    git log "$(git status -bs | grep "##" | awk '{print $2}')"
+}
+
 alias git-prune-branches-not-on-remote="git remote prune origin"
 
 # NETWORK
