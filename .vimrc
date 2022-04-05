@@ -19,7 +19,7 @@ Plug 'sjl/badwolf'
 Plug 'tomasiser/vim-code-dark'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'stephpy/vim-yaml'
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 Plug 'pseewald/vim-anyfold'
 call plug#end()
 let g:jellybeans_overrides = {
@@ -56,7 +56,7 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-let g:indentLine_char = '▏'
+"let g:indentLine_char = '▏'
 let g:onedark_termcolors=256
 "filetype plugin indent on
 syntax on
@@ -66,7 +66,7 @@ colorscheme jellybeans
 syntax on
 set t_Co=256
 set laststatus=2
-set number
+"set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
