@@ -52,6 +52,7 @@ function telnet_https() {
     openssl s_client -connect $HOST:$PORT
 }
 
+# AUX
 function cmcpw() {
     gpg -d "$1" | less
 }
@@ -66,6 +67,18 @@ function get_next_gidNumber()
 {
   last_gidNumber=$(ldapsearch -x "(objectClass=posixGroup)" gidNumber | grep "gidNumber: " | sed "s|gidNumber: ||" | uniq | sort -n | grep -v "65..." | tail -n 1)
   echo $((last_gidNumber + 1))
+}
+
+# Acesso remoto
+
+# tunel ssh
+function ssht() {
+    if [ -z "$1" ]
+    then
+        echo "No host supplied"
+    else
+        ssh -t -L 1521:127.0.0.1:61521 $USER@bastion ssh -L 61521:127.0.0.1:1521 $USER@$1
+    fi
 }
 
 function cmccontab() {
