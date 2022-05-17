@@ -31,6 +31,15 @@ function git-show-commits() {
     git log "$(git status -bs | grep "##" | awk '{print $2}')"
 }
 
+function git-discard-commits() {
+    if [ -z "$1" ]; then
+        echo "No branch supplied"
+    else
+        git fetch origin
+        git reset --hard "origin/$1"
+    fi
+}
+
 alias git-prune-branches-not-on-remote="git remote prune origin"
 
 # NETWORK
@@ -57,24 +66,21 @@ function cmcpw() {
     gpg -d "$1" | less
 }
 
-function get_next_uidNumber()
-{
-  last_uidNumber=$(ldapsearch -x "(objectClass=posixAccount)" uidNumber | grep "uidNumber: " | sed "s|uidNumber: ||" | uniq | sort -n | grep -v "65..." | tail -n 1)
-  echo $((last_uidNumber + 1))
+function get_next_uidNumber() {
+    last_uidNumber=$(ldapsearch -x "(objectClass=posixAccount)" uidNumber | grep "uidNumber: " | sed "s|uidNumber: ||" | uniq | sort -n | grep -v "65..." | tail -n 1)
+    echo $((last_uidNumber + 1))
 }
 
-function get_next_gidNumber()
-{
-  last_gidNumber=$(ldapsearch -x "(objectClass=posixGroup)" gidNumber | grep "gidNumber: " | sed "s|gidNumber: ||" | uniq | sort -n | grep -v "65..." | tail -n 1)
-  echo $((last_gidNumber + 1))
+function get_next_gidNumber() {
+    last_gidNumber=$(ldapsearch -x "(objectClass=posixGroup)" gidNumber | grep "gidNumber: " | sed "s|gidNumber: ||" | uniq | sort -n | grep -v "65..." | tail -n 1)
+    echo $((last_gidNumber + 1))
 }
 
 # Acesso remoto
 
 # tunel ssh
 function ssht() {
-    if [ -z "$1" ]
-    then
+    if [ -z "$1" ]; then
         echo "No host supplied"
     else
         ssh -t -L 1521:127.0.0.1:61521 $USER@bastion ssh -L 61521:127.0.0.1:1521 $USER@$1
@@ -82,40 +88,40 @@ function ssht() {
 }
 
 function cmccontab() {
-	rdesktop -u contab -r disk:home=/home/bruno.oliveira 10.0.0.39
+    rdesktop -u contab -r disk:home=/home/bruno.oliveira 10.0.0.39
 }
 
 function cmcimp() {
-	rdesktop -u admsuporte -r disk:Docs=/home/bruno.oliveira 10.0.0.7
+    rdesktop -u admsuporte -r disk:Docs=/home/bruno.oliveira 10.0.0.7
 }
 
 function buriti() {
-	rdesktop -u admsuporte -r disk:home=/home/bruno.oliveira 10.0.0.35
+    rdesktop -u admsuporte -r disk:home=/home/bruno.oliveira 10.0.0.35
 }
 
 function copaiba() {
-	rdesktop -u Administrator -r disk:home=/home/bruno.oliveira 10.0.0.15
+    rdesktop -u Administrator -r disk:home=/home/bruno.oliveira 10.0.0.15
 }
 
 function cmcwinapl() {
-	rdesktop -d CMCWIN -u admsuporte -r disk:Docs=/home/bruno.oliveira 10.0.0.36
+    rdesktop -d CMCWIN -u admsuporte -r disk:Docs=/home/bruno.oliveira 10.0.0.36
 }
 
 function cmcrds() {
-	rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 10.0.0.40
+    rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 10.0.0.40
 }
 
 function cmcrds-ext() {
-	rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 177.69.44.66:13389
+    rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 177.69.44.66:13389
 }
 
 # JSON e YAML
 function json2yaml {
-  python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
+    python -c 'import sys, yaml, json; print(yaml.dump(json.loads(sys.stdin.read())))'
 }
 
 function yaml2json {
-  python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
+    python -c 'import sys, yaml, json; print(json.dumps(yaml.safe_load(sys.stdin.read())))'
 }
 
 # Logs
@@ -148,7 +154,7 @@ function find-logins() {
         fi
         >"$out"
     fi
-    
+
     for d in $(ls -d */); do
         for f in $(ls -t $d"auth".log*); do
             year=$(ls -l --time-style="+%Y" "$f" | awk '{print $6}')
