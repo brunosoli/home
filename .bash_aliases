@@ -46,13 +46,13 @@ alias git-prune-branches-not-on-remote="git remote prune origin"
 function tp() {
     IP=$1
     PORT=$2
-    </dev/tcp/$IP/$PORT && echo Port open. || echo Port closed.
+    </dev/tcp/$IP/$PORT && echo "Port open." || echo "Port closed."
 }
 
 function tpu() {
     IP=$1
     PORT=$2
-    </dev/udp/$IP/$PORT && echo Port open. || echo Port closed.
+    </dev/udp/$IP/$PORT && echo "Port open." || echo "Port closed."
 }
 
 function telnet_https() {
@@ -113,6 +113,10 @@ function cmcrds() {
 
 function cmcrds-ext() {
     rdesktop -d CMCWIN -u rdsadmin -r disk:home=/home/bruno.oliveira 177.69.44.66:13389
+}
+
+function araucaria() {
+    rdesktop -d CMCWIN -u admsuporte -r disk:home=/home/bruno.oliveira 10.0.0.7
 }
 
 # JSON e YAML
