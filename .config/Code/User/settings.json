@@ -26,7 +26,6 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
-    "diffEditor.ignoreTrimWhitespace": false,
     "redhat.telemetry.enabled": true,
     "yaml.schemas": {
         "https://json.schemastore.org/ansible-playbook": [
@@ -76,5 +75,9 @@
     "editor.suggest.showMethods": true,
     "editor.suggest.preview": true,
     "editor.acceptSuggestionOnEnter": "on",
-    "editor.snippetSuggestions": "top"
+    "editor.snippetSuggestions": "top",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

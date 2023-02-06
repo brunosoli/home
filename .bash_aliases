@@ -104,7 +104,7 @@ function copaiba() {
 }
 
 function cmcwinapl() {
-    rdesktop -d CMCWIN -u admsuporte -r disk:Docs=/home/bruno.oliveira 10.0.0.36
+    rdesktop -d CMCWIN -u admsuporte -k pt-br -r disk:Docs=/home/bruno.oliveira 10.0.0.36
 }
 
 function cmcrds() {
