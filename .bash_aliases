@@ -5,13 +5,12 @@ alias l='ls'
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias ping='ping -i 0,2'
+alias ping='ping -i 0.2'
 alias pcat='pygmentize -g' # apt install python3-pygments
 alias vpn='sudo openfortivpn --config="$HOME/.openfortivpn.config"'
 alias rdesktop='rdesktop -g 1280x960'
 alias bfg='java -jar ~/workspace/bfg/bfg-1.13.0.jar'
 alias curitiba='curl http://wttr.in/curitiba'
-alias bastion='ssh -D 6666 bruno.oliveira@bastion'
 alias kubectl='microk8s.kubectl'
 
 # GIT
@@ -41,6 +40,31 @@ function git-discard-commits() {
 }
 
 alias git-prune-branches-not-on-remote="git remote prune origin"
+
+# Wi-Fi
+alias wifi='nmcli d wifi'
+
+# ANSIBLE
+
+# diff vault files
+function vdiff() {
+    if [ $# -ne 2 ]; then
+        echo "Uso: vdiff <vault 1> <vault 2>"
+        return 1
+    fi
+
+    if [ ! -f "$1" ] || [ ! -f "$2" ]; then
+        echo "Arquivos não encontrados"
+        return 1
+    fi
+
+    echo -n Password: 
+    read -s password
+    tmpfile=$(mktemp /tmp/vdiff-XXXXXX)
+    echo "$password" >"$tmpfile"
+    diff <(ansible-vault view --vault-pass-file "$tmpfile" "$1") <(echo "$password" | ansible-vault view --vault-pass-file "$tmpfile" "$2")
+    rm -f "$tmpfile"
+}
 
 # NETWORK
 function tp() {

@@ -3,7 +3,7 @@
     "editor.fontLigatures": true,
     "git.autofetch": true,
     "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -70,7 +70,6 @@
         "!Split",
         "!Split sequence"
     ],
-    "aws.profile": "profile:backup",
     "aws.telemetry": false,
     "editor.suggest.showMethods": true,
     "editor.suggest.preview": true,
@@ -79,5 +78,11 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "[css]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "diffEditor.maxComputationTime": 0,
+    "ansible.lightspeed.suggestions.enabled": true,
+    "ansible.lightspeed.enabled": true
 }
